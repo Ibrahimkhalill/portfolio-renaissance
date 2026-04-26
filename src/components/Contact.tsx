@@ -21,10 +21,27 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
-      <div className="max-w-7xl mx-auto section-padding">
+    <section id="contact" className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Animated background */}
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/3 -left-20 w-80 h-80 rounded-full bg-primary/20 blur-[140px]"
+      />
+      <motion.div
+        animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.35, 0.15] }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-10 right-0 w-96 h-96 rounded-full bg-accent/20 blur-[160px]"
+      />
+
+      <div className="relative max-w-7xl mx-auto section-padding">
         <div className="grid lg:grid-cols-2 gap-12">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
             <SectionHeader eyebrow="Get in touch" title="Let's build something." />
             <p className="mt-6 text-muted-foreground leading-relaxed max-w-md">
               I'm currently available for freelance work and full-time
@@ -36,43 +53,51 @@ export function Contact() {
                 icon={<Mail className="w-4 h-4" />}
                 label="Email"
                 value="ibrahim@example.com"
+                delay={0.1}
               />
               <ContactItem
                 icon={<MapPin className="w-4 h-4" />}
                 label="Location"
                 value="Available remotely"
+                delay={0.2}
               />
             </div>
 
-            <div className="mt-10 flex items-center gap-3">
-              <a
-                href="https://github.com/Ibrahimkhalill"
-                target="_blank"
-                rel="noreferrer"
-                className="w-11 h-11 rounded-xl glass flex items-center justify-center hover:bg-surface transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-11 h-11 rounded-xl glass flex items-center justify-center hover:bg-surface transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-10 flex items-center gap-3"
+            >
+              {[
+                { href: "https://github.com/Ibrahimkhalill", icon: Github, label: "GitHub" },
+                { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
+              ].map(({ href, icon: Icon, label }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  whileHover={{ y: -4, scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="w-11 h-11 rounded-xl glass flex items-center justify-center hover:border-primary/50 hover:text-primary transition-colors"
+                  aria-label={label}
+                >
+                  <Icon className="w-4 h-4" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </motion.div>
 
           <motion.form
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             onSubmit={onSubmit}
-            className="card-gradient border border-border/50 rounded-2xl p-7 space-y-5"
+            className="card-gradient border border-border/50 rounded-2xl p-7 space-y-5 hover:border-primary/40 transition-colors"
           >
             <Field
               label="Your name"
@@ -80,6 +105,7 @@ export function Contact() {
               onChange={(v) => setForm({ ...form, name: v })}
               placeholder="John Doe"
               required
+              delay={0.1}
             />
             <Field
               label="Email address"
@@ -88,8 +114,14 @@ export function Contact() {
               onChange={(v) => setForm({ ...form, email: v })}
               placeholder="john@example.com"
               required
+              delay={0.2}
             />
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <label className="text-sm font-medium mb-2 block text-muted-foreground">
                 Message
               </label>
@@ -101,18 +133,20 @@ export function Contact() {
                 placeholder="Tell me about your project…"
                 className="w-full px-4 py-3 rounded-xl bg-input border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all resize-none text-sm"
               />
-            </div>
-            <button
+            </motion.div>
+            <motion.button
               type="submit"
               disabled={loading}
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl gradient-primary text-primary-foreground font-medium hover:scale-[1.02] active:scale-[0.98] transition-transform disabled:opacity-60"
+              whileHover={{ scale: loading ? 1 : 1.02 }}
+              whileTap={{ scale: loading ? 1 : 0.98 }}
+              className="btn-primary w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium disabled:opacity-60"
             >
               {loading ? "Sending…" : (
                 <>
                   Send message <Send className="w-4 h-4" />
                 </>
               )}
-            </button>
+            </motion.button>
           </motion.form>
         </div>
       </div>
@@ -127,6 +161,7 @@ function Field({
   placeholder,
   type = "text",
   required,
+  delay = 0,
 }: {
   label: string;
   value: string;
@@ -134,9 +169,15 @@ function Field({
   placeholder?: string;
   type?: string;
   required?: boolean;
+  delay?: number;
 }) {
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+    >
       <label className="text-sm font-medium mb-2 block text-muted-foreground">
         {label}
       </label>
@@ -148,7 +189,7 @@ function Field({
         placeholder={placeholder}
         className="w-full px-4 py-3 rounded-xl bg-input border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all text-sm"
       />
-    </div>
+    </motion.div>
   );
 }
 
@@ -156,14 +197,23 @@ function ContactItem({
   icon,
   label,
   value,
+  delay = 0,
 }: {
   icon: React.ReactNode;
   label: string;
   value: string;
+  delay?: number;
 }) {
   return (
-    <div className="flex items-center gap-4">
-      <div className="w-10 h-10 rounded-xl glass flex items-center justify-center text-primary">
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      whileHover={{ x: 6 }}
+      className="flex items-center gap-4 group cursor-default"
+    >
+      <div className="w-10 h-10 rounded-xl glass flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
         {icon}
       </div>
       <div>
@@ -172,6 +222,6 @@ function ContactItem({
         </p>
         <p className="text-sm font-medium">{value}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
