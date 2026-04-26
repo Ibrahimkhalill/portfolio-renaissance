@@ -1,26 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
+import { About } from "@/components/About";
+import { Experience } from "@/components/Experience";
+import { Tech } from "@/components/Tech";
+import { Works } from "@/components/Works";
+import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Ibrahim Khalil — Full Stack Developer & AI Engineer" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Ibrahim Khalil — Full Stack Developer building AI-powered web and mobile applications with React, Next.js, Django.",
+      },
+      { property: "og:title", content: "Ibrahim Khalil — Full Stack Developer" },
+      {
+        property: "og:description",
+        content:
+          "Full Stack Developer & AI Engineer. Selected work, experience, and tech stack.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Tech />
+        <Works />
+        <Contact />
+      </main>
+      <Footer />
+      <Toaster />
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
