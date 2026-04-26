@@ -20,13 +20,15 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto section-padding flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-lg gradient-primary flex items-center justify-center font-display font-bold text-primary-foreground group-hover:scale-110 transition-transform">
-            I
-          </div>
-          <span className="font-display font-semibold text-lg hidden sm:block">
-            Ibrahim<span className="text-primary">.</span>dev
-          </span>
+        <Link to="/" className="flex items-center gap-1 group">
+          <img
+            src="/brand-logo.png"
+            alt="Ibrahim Hossen"
+            width={27}
+            height={27}
+            className=" object-contain group-hover:scale-110 transition-transform"
+          />
+          <span className="font-display font-semibold text-lg hidden sm:block">Ibrahim Hossen</span>
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">
@@ -54,7 +56,7 @@ export function Navbar() {
             <Github className="w-4 h-4" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/mdibrahimhossen"
             target="_blank"
             rel="noreferrer"
             className="p-2 rounded-lg hover:bg-surface transition-colors"

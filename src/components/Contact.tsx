@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "./About";
 import { Mail, MapPin, Send, Github, Linkedin } from "lucide-react";
 import { toast } from "sonner";
+import { EarthCanvas } from "./EarthCanvas";
+import { StarsCanvas } from "./StarsCanvas";
 
 export function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -16,12 +18,19 @@ export function Contact() {
       toast.success("Message ready! Opening your email client…");
       const subject = encodeURIComponent(`Portfolio contact from ${form.name}`);
       const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`);
-      window.location.href = `mailto:ibrahim@example.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:mdibrahimkhalil516@gmail.com?subject=${subject}&body=${body}`;
     }, 600);
   };
 
   return (
     <section id="contact" className="relative py-24 sm:py-32 overflow-hidden">
+      <div className="absolute inset-0 opacity-55 pointer-events-none">
+        <StarsCanvas />
+      </div>
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <EarthCanvas />
+      </div>
+
       {/* Animated background */}
       <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
@@ -34,7 +43,7 @@ export function Contact() {
         className="absolute bottom-10 right-0 w-96 h-96 rounded-full bg-accent/20 blur-[160px]"
       />
 
-      <div className="relative max-w-7xl mx-auto section-padding">
+      <div className="relative z-10 max-w-7xl mx-auto section-padding">
         <div className="grid lg:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -44,15 +53,15 @@ export function Contact() {
           >
             <SectionHeader eyebrow="Get in touch" title="Let's build something." />
             <p className="mt-6 text-muted-foreground leading-relaxed max-w-md">
-              I'm currently available for freelance work and full-time
-              opportunities. Drop a line and I'll respond within 24 hours.
+              I'm currently available for freelance work and full-time opportunities. Drop a line
+              and I'll respond within 24 hours.
             </p>
 
             <div className="mt-10 space-y-5">
               <ContactItem
                 icon={<Mail className="w-4 h-4" />}
                 label="Email"
-                value="ibrahim@example.com"
+                value="mdibrahimkhalil516@gmail.com"
                 delay={0.1}
               />
               <ContactItem
@@ -72,7 +81,11 @@ export function Contact() {
             >
               {[
                 { href: "https://github.com/Ibrahimkhalill", icon: Github, label: "GitHub" },
-                { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
+                {
+                  href: "https://www.linkedin.com/in/mdibrahimhossen",
+                  icon: Linkedin,
+                  label: "LinkedIn",
+                },
               ].map(({ href, icon: Icon, label }) => (
                 <motion.a
                   key={label}
@@ -141,7 +154,9 @@ export function Contact() {
               whileTap={{ scale: loading ? 1 : 0.98 }}
               className="btn-primary w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium disabled:opacity-60"
             >
-              {loading ? "Sending…" : (
+              {loading ? (
+                "Sending…"
+              ) : (
                 <>
                   Send message <Send className="w-4 h-4" />
                 </>
@@ -178,9 +193,7 @@ function Field({
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
     >
-      <label className="text-sm font-medium mb-2 block text-muted-foreground">
-        {label}
-      </label>
+      <label className="text-sm font-medium mb-2 block text-muted-foreground">{label}</label>
       <input
         type={type}
         required={required}
@@ -217,9 +230,7 @@ function ContactItem({
         {icon}
       </div>
       <div>
-        <p className="text-xs uppercase tracking-wider text-muted-foreground">
-          {label}
-        </p>
+        <p className="text-xs uppercase tracking-wider text-muted-foreground">{label}</p>
         <p className="text-sm font-medium">{value}</p>
       </div>
     </motion.div>

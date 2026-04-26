@@ -39,9 +39,7 @@ export function Hero() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
             </span>
             <Sparkles className="w-3.5 h-3.5 text-primary" />
-            <span className="text-muted-foreground">
-              Available for new opportunities
-            </span>
+            <span className="text-muted-foreground">Available for new opportunities</span>
           </motion.div>
 
           <motion.h1
@@ -57,7 +55,7 @@ export function Hero() {
             </span>
             <br />
             <span className="text-3xl sm:text-4xl lg:text-5xl font-medium">
-              web & mobile experiences.
+              web & mobile applications.
             </span>
           </motion.h1>
 
@@ -67,8 +65,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
-            Full Stack Developer crafting scalable products with React, Next.js,
-            Django, and modern AI integrations — from idea to production.
+            Full Stack Developer crafting scalable products with React, Next.js, Django, and modern
+            AI integrations — from idea to production.
           </motion.p>
 
           <motion.div
@@ -97,11 +95,11 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex items-center gap-8 pt-6"
           >
-            <Stat label="Years" value="2+" />
+            <Stat label="Years" value="4+" />
             <div className="w-px h-10 bg-border" />
-            <Stat label="Projects" value="20+" />
+            <Stat label="Projects" value="50+" />
             <div className="w-px h-10 bg-border" />
-            <Stat label="Tech stack" value="13+" />
+            <Stat label="Tech stack" value="15+" />
           </motion.div>
         </div>
 
@@ -207,14 +205,9 @@ export function Hero() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <motion.div
-      whileHover={{ y: -4, scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 300 }}
-    >
+    <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
       <div className="text-2xl font-display font-bold gradient-text">{value}</div>
-      <div className="text-xs text-muted-foreground uppercase tracking-wider">
-        {label}
-      </div>
+      <div className="text-xs text-muted-foreground uppercase tracking-wider">{label}</div>
     </motion.div>
   );
 }

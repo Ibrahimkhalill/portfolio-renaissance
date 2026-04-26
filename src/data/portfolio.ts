@@ -1,5 +1,3 @@
-import html from "@/assets/tech/html.png";
-import css from "@/assets/tech/css.png";
 import javascript from "@/assets/tech/javascript.png";
 import typescript from "@/assets/tech/typescript.png";
 import reactjs from "@/assets/tech/reactjs.png";
@@ -7,7 +5,9 @@ import redux from "@/assets/tech/redux.png";
 import tailwind from "@/assets/tech/tailwind.png";
 import nodejs from "@/assets/tech/nodejs.png";
 import mysql from "@/assets/tech/mysql.png";
-import mongodb from "@/assets/tech/mongodb.png";
+import django from "@/assets/tech/django.png";
+import python from "@/assets/tech/python.png";
+import aws from "@/assets/tech/aws.png";
 import git from "@/assets/tech/git.png";
 import figma from "@/assets/tech/figma.png";
 import docker from "@/assets/tech/docker.png";
@@ -21,6 +21,7 @@ import arfoodmenu from "@/assets/projects/arfoodmenu.png";
 import carrent from "@/assets/projects/carrent.png";
 import jobit from "@/assets/projects/jobit.png";
 import backend from "@/assets/projects/backend.png";
+import lms from "@/assets/projects/lms.png";
 import mobile from "@/assets/projects/mobile.png";
 import creator from "@/assets/projects/creator.png";
 import web from "@/assets/projects/backend.png";
@@ -41,15 +42,15 @@ export const services = [
 ];
 
 export const technologies = [
-  { name: "HTML 5", icon: html },
-  { name: "CSS 3", icon: css },
   { name: "JavaScript", icon: javascript },
   { name: "TypeScript", icon: typescript },
   { name: "React", icon: reactjs },
   { name: "Redux", icon: redux },
   { name: "Tailwind", icon: tailwind },
   { name: "Node.js", icon: nodejs },
-  { name: "MongoDB", icon: mongodb },
+  { name: "Django", icon: django },
+  { name: "Python", icon: python },
+  { name: "AWS", icon: aws },
   { name: "MySQL", icon: mysql },
   { name: "Docker", icon: docker },
   { name: "Git", icon: git },
@@ -129,7 +130,7 @@ export const projects = [
     description:
       "User-focused Learning Management System for course creation, delivery, and student progress tracking.",
     tags: ["react", "nodejs", "tailwind"],
-    image: backend,
+    image: lms,
     link: "https://github.com/Ibrahimkhalill/Learning-Management-System.git",
   },
 ];

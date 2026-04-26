@@ -12,13 +12,13 @@ import { Toaster } from "@/components/ui/sonner";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ibrahim Khalil — Full Stack Developer & AI Engineer" },
+      { title: "Ibrahim Hossen — Full Stack Developer & AI Engineer" },
       {
         name: "description",
         content:
-          "Portfolio of Ibrahim Khalil — Full Stack Developer building AI-powered web and mobile applications with React, Next.js, Django.",
+          "Portfolio of Ibrahim Hossen — Full Stack Developer building AI-powered web and mobile applications with React, Next.js, Django.",
       },
-      { property: "og:title", content: "Ibrahim Khalil — Full Stack Developer" },
+      { property: "og:title", content: "Ibrahim Hossen — Full Stack Developer" },
       {
         property: "og:description",
         content:
