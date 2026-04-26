@@ -5,15 +5,13 @@ import profileImg from "@/assets/profile.png";
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-24">
-      {/* Subtle grid overlay */}
+      {/* Background grid */}
       <div
-        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             "linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
-          maskImage:
-            "radial-gradient(ellipse at center, black 40%, transparent 80%)",
         }}
       />
       {/* Animated blobs */}
@@ -103,118 +101,94 @@ export function Hero() {
             <div className="w-px h-10 bg-border" />
             <Stat label="Projects" value="20+" />
             <div className="w-px h-10 bg-border" />
-            <Stat label="Tech stack" value="18+" />
+            <Stat label="Tech stack" value="13+" />
           </motion.div>
         </div>
 
-        {/* Visual — profile photo with rings */}
+        {/* Visual — profile photo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-5 relative flex items-center justify-center"
         >
-          <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] lg:w-[460px] lg:h-[460px]">
-            {/* Outer dashed rotating ring */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30"
-            />
-            {/* Solid inner ring (counter-rotate) */}
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-5 rounded-full border border-accent/30"
-            />
-            {/* Soft glow halo */}
-            <div className="absolute inset-8 rounded-full gradient-primary opacity-25 blur-3xl animate-pulse" />
+          <div className="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] lg:w-[440px] lg:h-[440px]">
+            {/* Outer rotating ring */}
+            <div className="absolute inset-0 rounded-full animate-spin-slow">
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30" />
+            </div>
+            {/* Inner rotating ring */}
+            <div className="absolute inset-6 rounded-full animate-spin-reverse">
+              <div className="absolute inset-0 rounded-full border border-accent/40" />
+            </div>
 
-            {/* Photo container — circular crop, soft inner gradient */}
+            {/* Glow halo */}
+            <div className="absolute inset-4 rounded-full gradient-primary opacity-30 blur-2xl animate-pulse" />
+
+            {/* Photo container */}
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-12 rounded-full overflow-hidden glass shadow-[var(--shadow-elegant)]"
+              className="absolute inset-10 rounded-full overflow-hidden glass shadow-[var(--shadow-elegant)]"
             >
-              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-primary/15 via-transparent to-accent/15 z-10 pointer-events-none" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-primary/20 via-transparent to-accent/20" />
               <img
                 src={profileImg}
                 alt="Ibrahim Khalil — portrait"
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-top scale-110"
                 loading="eager"
               />
-              <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/10 z-10 pointer-events-none" />
+              <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/10" />
             </motion.div>
 
-            {/* Orbiting glow dots — different orbits */}
-            {[
-              { deg: 0, dur: 14, size: 10, color: "var(--primary)" },
-              { deg: 90, dur: 18, size: 8, color: "var(--accent)" },
-              { deg: 180, dur: 22, size: 12, color: "var(--primary-glow)" },
-              { deg: 270, dur: 16, size: 6, color: "var(--accent)" },
-              { deg: 45, dur: 20, size: 8, color: "var(--primary)" },
-            ].map(({ deg, dur, size, color }, i) => (
+            {/* Orbiting dots */}
+            {[0, 72, 144, 216, 288].map((deg, i) => (
               <motion.div
-                key={i}
+                key={deg}
                 animate={{ rotate: 360 }}
-                transition={{ duration: dur, repeat: Infinity, ease: "linear" }}
+                transition={{
+                  duration: 14 + i,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
                 className="absolute inset-0"
                 style={{ transformOrigin: "50% 50%" }}
               >
                 <div
-                  className="absolute top-1/2 left-1/2 rounded-full"
+                  className="absolute top-1/2 left-1/2 w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_18px_var(--primary)]"
                   style={{
-                    width: size,
-                    height: size,
-                    background: color,
-                    boxShadow: `0 0 18px ${color}`,
                     transform: `rotate(${deg}deg) translateX(220px) translateY(-50%)`,
                   }}
                 />
               </motion.div>
             ))}
 
-            {/* Floating badge — top left */}
+            {/* Floating badges */}
             <motion.div
-              initial={{ opacity: 0, x: -20, y: 0 }}
-              animate={{ opacity: 1, x: 0, y: [-4, 4, -4] }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
               transition={{
                 opacity: { delay: 1, duration: 0.5 },
                 x: { delay: 1, duration: 0.5 },
                 y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
               }}
-              className="absolute top-8 -left-2 sm:-left-6 px-3 py-2 rounded-xl glass text-xs font-medium flex items-center gap-2 shadow-lg"
+              className="absolute top-10 -left-2 sm:-left-6 px-3 py-2 rounded-xl glass text-xs font-medium flex items-center gap-2"
             >
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               React · Next.js
             </motion.div>
-            {/* Floating badge — bottom right */}
             <motion.div
-              initial={{ opacity: 0, x: 20, y: 0 }}
-              animate={{ opacity: 1, x: 0, y: [4, -4, 4] }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0, y: [0, 8, 0] }}
               transition={{
                 opacity: { delay: 1.2, duration: 0.5 },
                 x: { delay: 1.2, duration: 0.5 },
-                y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
               }}
-              className="absolute bottom-14 -right-2 sm:-right-6 px-3 py-2 rounded-xl glass text-xs font-medium flex items-center gap-2 shadow-lg"
+              className="absolute bottom-16 -right-2 sm:-right-6 px-3 py-2 rounded-xl glass text-xs font-medium flex items-center gap-2"
             >
               <Sparkles className="w-3 h-3 text-primary" />
               AI · Django
-            </motion.div>
-            {/* Floating badge — middle left */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0, y: [0, 8, 0] }}
-              transition={{
-                opacity: { delay: 1.4, duration: 0.5 },
-                x: { delay: 1.4, duration: 0.5 },
-                y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
-              }}
-              className="absolute bottom-8 -left-4 sm:-left-10 px-3 py-2 rounded-xl glass text-xs font-medium flex items-center gap-2 shadow-lg"
-            >
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              Python · AWS
             </motion.div>
           </div>
         </motion.div>

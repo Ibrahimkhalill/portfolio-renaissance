@@ -11,11 +11,6 @@ import mongodb from "@/assets/tech/mongodb.png";
 import git from "@/assets/tech/git.png";
 import figma from "@/assets/tech/figma.png";
 import docker from "@/assets/tech/docker.png";
-import python from "@/assets/tech/python.png";
-import django from "@/assets/tech/django.png";
-import twilio from "@/assets/tech/twilio.png";
-import vapi from "@/assets/tech/vapi.png";
-import aws from "@/assets/tech/aws.png";
 
 import merinasoft from "@/assets/company/merinasoft.png";
 import jvai from "@/assets/company/jvai.png";
@@ -54,11 +49,6 @@ export const technologies = [
   { name: "Redux", icon: redux },
   { name: "Tailwind", icon: tailwind },
   { name: "Node.js", icon: nodejs },
-  { name: "Python", icon: python },
-  { name: "Django", icon: django },
-  { name: "Twilio", icon: twilio },
-  { name: "Vapi", icon: vapi },
-  { name: "AWS", icon: aws },
   { name: "MongoDB", icon: mongodb },
   { name: "MySQL", icon: mysql },
   { name: "Docker", icon: docker },
