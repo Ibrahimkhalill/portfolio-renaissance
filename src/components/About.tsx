@@ -105,15 +105,15 @@ export function About() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 whileHover={{ y: -12, scale: 1.02 }}
-                className="group relative"
+                className="group relative h-full"
               >
-                <div className="rounded-[22px] bg-gradient-to-b from-cyan-400/70 via-violet-500/60 to-fuchsia-500/70 p-[1px] shadow-[0_0_30px_hsl(var(--primary)/0.18)] transition-all duration-500 group-hover:shadow-[0_0_52px_hsl(var(--primary)/0.35)] group-hover:from-cyan-300/85 group-hover:via-violet-400/80 group-hover:to-fuchsia-400/85">
-                  <div className="relative overflow-hidden rounded-[21px] min-h-[260px] px-6 py-10 border border-white/5 bg-[linear-gradient(160deg,rgba(8,12,30,0.95),rgba(16,13,43,0.95))] flex flex-col items-center justify-center text-center">
+                <div className="h-full rounded-[22px] bg-gradient-to-b from-cyan-400/70 via-violet-500/60 to-fuchsia-500/70 p-[1px] shadow-[0_0_30px_hsl(var(--primary)/0.18)] transition-all duration-500 group-hover:shadow-[0_0_52px_hsl(var(--primary)/0.35)] group-hover:from-cyan-300/85 group-hover:via-violet-400/80 group-hover:to-fuchsia-400/85">
+                  <div className="relative h-[280px] overflow-hidden rounded-[21px] px-6 py-10 border border-white/5 bg-[linear-gradient(160deg,rgba(8,12,30,0.95),rgba(16,13,43,0.95))] flex flex-col items-center justify-center text-center">
                     <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.18),transparent_55%)]" />
                     <div className="relative z-10 w-20 h-20 rounded-2xl mb-8 grid place-items-center bg-gradient-to-br from-cyan-400/20 via-violet-400/20 to-fuchsia-400/20 ring-1 ring-cyan-300/35 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-10 h-10 text-cyan-200 drop-shadow-[0_0_8px_rgba(34,211,238,0.45)]" />
                     </div>
-                    <h3 className="relative z-10 text-2xl font-extrabold leading-tight text-white max-w-[12ch] transition-transform duration-300 group-hover:scale-[1.03]">
+                    <h3 className="relative z-10 text-2xl font-extrabold leading-tight text-white max-w-[12ch] min-h-[4.5em] flex items-center transition-transform duration-300 group-hover:scale-[1.03]">
                       {s.title}
                     </h3>
                   </div>

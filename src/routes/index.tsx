@@ -21,8 +21,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Ibrahim Hossen — Full Stack Developer" },
       {
         property: "og:description",
-        content:
-          "Full Stack Developer & AI Engineer. Selected work, experience, and tech stack.",
+        content: "Full Stack Developer & AI Engineer. Selected work, experience, and tech stack.",
       },
     ],
   }),
@@ -41,7 +40,7 @@ function Index() {
         <Works />
         <Contact />
       </main>
-      <Footer />
+      {/* <Footer /> */}
       <Toaster />
     </div>
   );

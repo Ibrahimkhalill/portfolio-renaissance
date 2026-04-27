@@ -20,15 +20,15 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto section-padding flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-1 group">
+        <Link to="/" className="flex items-center gap-2 group">
           <img
             src="/brand-logo.png"
             alt="Ibrahim Hossen"
-            width={27}
-            height={27}
+            width={30}
+            height={30}
             className=" object-contain group-hover:scale-110 transition-transform"
           />
-          <span className="font-display font-semibold text-lg hidden sm:block">Ibrahim Hossen</span>
+          <span className="font-display font-semibold text-lg hidden sm:block">Ibrahim</span>
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">

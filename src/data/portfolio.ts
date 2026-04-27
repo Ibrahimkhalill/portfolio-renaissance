@@ -35,10 +35,10 @@ export const navLinks = [
 ];
 
 export const services = [
-  { title: "Full Stack Developer", icon: web },
-  { title: "AI Integration Engineer", icon: mobile },
-  { title: "Backend & API Developer", icon: backend },
-  { title: "Cloud & DevOps Practitioner", icon: creator },
+  { title: "Full-Stack Web & Mobile Application Development", icon: web },
+  { title: "AI & Automation Integration Solutions", icon: mobile },
+  { title: "Scalable Backend & API Development", icon: backend },
+  { title: "Cloud Infrastructure & DevOps Engineering", icon: creator },
 ];
 
 export const technologies = [
