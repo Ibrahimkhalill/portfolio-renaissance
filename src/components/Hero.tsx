@@ -330,13 +330,6 @@ export function Hero() {
               ))}
             </div>
 
-            <a
-              href="#work"
-              className="hero-cta inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-sm transition-transform duration-300 hover:scale-105 active:scale-95"
-            >
-              View My Work
-              <ArrowRight className="w-4 h-4" />
-            </a>
           </div>
         </div>
       </div>
