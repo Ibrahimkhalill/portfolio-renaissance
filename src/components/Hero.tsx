@@ -217,32 +217,6 @@ export function Hero() {
 
         {/* Card inner */}
         <div className="hero-card-inner relative z-10 p-6 sm:p-10 lg:p-14">
-          {/* Top bar */}
-          <div className="flex items-center justify-between mb-12 sm:mb-16">
-            {/* Logo */}
-            <div className="hero-logo flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00ffc8] to-[#0088ff] flex items-center justify-center">
-                <span className="text-black font-bold text-lg font-display">I</span>
-              </div>
-              <div>
-                <div className="font-display font-bold text-lg leading-none hero-name-text">
-                  Ibrahim
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.3em] hero-subtitle-label">
-                  Portfolio
-                </div>
-              </div>
-            </div>
-
-            {/* Dark mode toggle */}
-            <button
-              onClick={() => setDark((d) => !d)}
-              className="hero-toggle p-2.5 rounded-full transition-all duration-300 hover:scale-110"
-              aria-label="Toggle theme"
-            >
-              {dark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-          </div>
 
           {/* Hero content grid */}
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[400px] sm:min-h-[500px]">
