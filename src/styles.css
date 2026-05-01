@@ -332,15 +332,15 @@
 
 /* ===== Light mode overrides ===== */
 .light-mode .hero-section {
-  background: linear-gradient(135deg, #c8d8e4 0%, #e8f0f6 40%, #d5e3ed 100%);
+  background: transparent;
 }
 .light-mode .hero-card {
-  background: rgba(255,255,255,0.75);
-  border-color: rgba(0,0,0,0.08);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 .light-mode .hero-card-inner {
-  background: linear-gradient(145deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%);
+  background: transparent;
 }
 .light-mode .hero-name-text { color: #1a2a3a; }
 .light-mode .hero-subtitle-label { color: rgba(0,0,0,0.45); }
