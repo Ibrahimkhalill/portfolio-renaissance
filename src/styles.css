@@ -240,19 +240,19 @@
 /* ===== Hero Section — GSAP Powered ===== */
 
 .hero-section {
-  background: linear-gradient(135deg, #1a2a3a 0%, #2d4a5a 40%, #1e3545 100%);
+  background: transparent;
 }
 
 .hero-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border: none;
   box-shadow: none;
 }
 
 .hero-card-inner {
-  background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+  background: transparent;
 }
 
 .hero-name-text { color: #f0f4f8; }
@@ -332,15 +332,15 @@
 
 /* ===== Light mode overrides ===== */
 .light-mode .hero-section {
-  background: linear-gradient(135deg, #c8d8e4 0%, #e8f0f6 40%, #d5e3ed 100%);
+  background: transparent;
 }
 .light-mode .hero-card {
-  background: rgba(255,255,255,0.75);
-  border-color: rgba(0,0,0,0.08);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 .light-mode .hero-card-inner {
-  background: linear-gradient(145deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%);
+  background: transparent;
 }
 .light-mode .hero-name-text { color: #1a2a3a; }
 .light-mode .hero-subtitle-label { color: rgba(0,0,0,0.45); }
