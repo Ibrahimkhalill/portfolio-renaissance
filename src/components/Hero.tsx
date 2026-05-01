@@ -234,23 +234,6 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Nav */}
-            <nav className="hidden md:flex items-center gap-1">
-              {NAV_ITEMS.map((item, i) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className={`hero-nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 ${
-                    i === 0
-                      ? "hero-nav-active"
-                      : "hero-nav-inactive hover:bg-white/10"
-                  }`}
-                >
-                  {item}
-                </a>
-              ))}
-            </nav>
-
             {/* Dark mode toggle */}
             <button
               onClick={() => setDark((d) => !d)}
