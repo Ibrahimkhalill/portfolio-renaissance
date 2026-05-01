@@ -1,213 +1,388 @@
-import { motion } from "framer-motion";
-import { ArrowDown, Sparkles, Download } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Github, Linkedin, Twitter, ArrowRight, Moon, Sun } from "lucide-react";
+import gsap from "gsap";
 import profileImg from "@/assets/profile.png";
 
-export function Hero() {
-  return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-24">
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--color-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-      {/* Animated blobs */}
-      <motion.div
-        animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 -left-20 w-72 h-72 rounded-full bg-primary/30 blur-[120px]"
-      />
-      <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-full bg-accent/20 blur-[140px]"
-      />
+const NAV_ITEMS = ["Home", "Work", "Skills", "Contact"];
 
-      <div className="relative max-w-7xl mx-auto section-padding w-full grid lg:grid-cols-12 gap-10 items-center">
-        <div className="lg:col-span-7 space-y-7">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-            </span>
-            <Sparkles className="w-3.5 h-3.5 text-primary" />
-            <span className="text-muted-foreground">Available for new opportunities</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05]"
-          >
-            Hi, I'm <span className="gradient-text">Ibrahim</span>
-            <br />
-            <span className="text-muted-foreground text-3xl sm:text-4xl lg:text-5xl font-medium">
-              I build AI-powered
-            </span>
-            <br />
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-medium">
-              web & mobile applications.
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-lg text-muted-foreground max-w-xl leading-relaxed"
-          >
-            Full Stack Developer crafting scalable products with React, Next.js, Django, and modern
-            AI integrations — from idea to production.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap items-center gap-4"
-          >
-            <a
-              href="#work"
-              className="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-medium"
-            >
-              View my work
-            </a>
-            <a
-              href="#contact"
-              className="btn-ghost inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-foreground font-medium"
-            >
-              <Download className="w-4 h-4" /> Get in touch
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex items-center gap-8 pt-6"
-          >
-            <Stat label="Years" value="4+" />
-            <div className="w-px h-10 bg-border" />
-            <Stat label="Projects" value="50+" />
-            <div className="w-px h-10 bg-border" />
-            <Stat label="Tech stack" value="15+" />
-          </motion.div>
-        </div>
-
-        {/* Visual — profile photo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-5 relative flex items-center justify-center"
-        >
-          <div className="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] lg:w-[440px] lg:h-[440px]">
-            {/* Outer rotating ring */}
-            <div className="absolute inset-0 rounded-full animate-spin-slow">
-              <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30" />
-            </div>
-            {/* Inner rotating ring */}
-            <div className="absolute inset-6 rounded-full animate-spin-reverse">
-              <div className="absolute inset-0 rounded-full border border-accent/40" />
-            </div>
-
-            {/* Glow halo */}
-            <div className="absolute inset-4 rounded-full gradient-primary opacity-30 blur-2xl animate-pulse" />
-
-            {/* Photo container */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-10 rounded-full overflow-hidden glass shadow-[var(--shadow-elegant)]"
-            >
-              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-primary/20 via-transparent to-accent/20" />
-              <img
-                src={profileImg}
-                alt="Ibrahim Khalil — portrait"
-                className="w-full h-full object-cover object-top scale-110"
-                loading="eager"
-              />
-              <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/10" />
-            </motion.div>
-
-            {/* Orbiting dots */}
-            {[0, 72, 144, 216, 288].map((deg, i) => (
-              <motion.div
-                key={deg}
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 14 + i,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute inset-0"
-                style={{ transformOrigin: "50% 50%" }}
-              >
-                <div
-                  className="absolute top-1/2 left-1/2 w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_18px_var(--primary)]"
-                  style={{
-                    transform: `rotate(${deg}deg) translateX(220px) translateY(-50%)`,
-                  }}
-                />
-              </motion.div>
-            ))}
-
-            {/* Floating badges */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
-              transition={{
-                opacity: { delay: 1, duration: 0.5 },
-                x: { delay: 1, duration: 0.5 },
-                y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-              }}
-              className="absolute top-10 -left-2 sm:-left-6 px-3 py-2 rounded-xl glass text-xs font-medium flex items-center gap-2"
-            >
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              React · Next.js
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0, y: [0, 8, 0] }}
-              transition={{
-                opacity: { delay: 1.2, duration: 0.5 },
-                x: { delay: 1.2, duration: 0.5 },
-                y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
-              }}
-              className="absolute bottom-16 -right-2 sm:-right-6 px-3 py-2 rounded-xl glass text-xs font-medium flex items-center gap-2"
-            >
-              <Sparkles className="w-3 h-3 text-primary" />
-              AI · Django
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
-
-      <a
-        href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-      >
-        <span className="text-xs uppercase tracking-widest">Scroll</span>
-        <ArrowDown className="w-4 h-4 animate-bounce" />
-      </a>
-    </section>
-  );
+function splitTextToChars(text: string): string {
+  return text
+    .split("")
+    .map((ch) =>
+      ch === " "
+        ? '<span class="hero-char inline-block">&nbsp;</span>'
+        : `<span class="hero-char inline-block">${ch}</span>`
+    )
+    .join("");
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+export function Hero() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const orbRef = useRef<HTMLDivElement>(null);
+  const particlesRef = useRef<HTMLDivElement>(null);
+  const blobRef = useRef<HTMLDivElement>(null);
+  const [dark, setDark] = useState(true);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("light-mode", !dark);
+  }, [dark]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Nav links stagger
+      gsap.from(".hero-nav-link", {
+        y: -20,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.7,
+        ease: "power3.out",
+        delay: 0.2,
+      });
+
+      // 2. Headline char-by-char
+      if (headlineRef.current) {
+        headlineRef.current.innerHTML = splitTextToChars(
+          headlineRef.current.textContent || ""
+        );
+        gsap.from(".hero-char", {
+          y: 60,
+          opacity: 0,
+          stagger: 0.04,
+          duration: 0.8,
+          ease: "power3.out",
+          delay: 0.5,
+        });
+      }
+
+      // 3. Subtitle fade
+      gsap.from(".hero-subtitle", {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: "power2.out",
+        delay: 1.4,
+      });
+
+      // 4. Social icons slide in
+      gsap.from(".hero-social-icon", {
+        x: -30,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 1.6,
+      });
+
+      // 5. 3D orb rotation
+      if (orbRef.current) {
+        gsap.to(orbRef.current, {
+          rotationY: 360,
+          duration: 8,
+          repeat: -1,
+          ease: "none",
+          transformPerspective: 800,
+        });
+      }
+
+      // 6. CTA button pulse
+      gsap.to(".hero-cta", {
+        boxShadow: "0 0 30px rgba(0,255,200,0.5), 0 0 60px rgba(0,255,200,0.2)",
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      // 8. Floating particles
+      if (particlesRef.current) {
+        const dots = particlesRef.current.querySelectorAll(".particle-dot");
+        dots.forEach((dot) => {
+          gsap.to(dot, {
+            x: `random(-80, 80)`,
+            y: `random(-80, 80)`,
+            duration: `random(4, 8)`,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: `random(0, 3)`,
+          });
+        });
+      }
+
+      // 9. Blob morph / breathe
+      if (blobRef.current) {
+        gsap.to(blobRef.current, {
+          scale: 1.15,
+          duration: 4,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
+
+      // 10. Card entrance
+      gsap.from(cardRef.current, {
+        scale: 0.92,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      // Logo + dark mode toggle
+      gsap.from(".hero-logo", {
+        opacity: 0,
+        x: -20,
+        duration: 0.6,
+        ease: "power2.out",
+        delay: 0.1,
+      });
+
+      gsap.from(".hero-cta-wrap", {
+        opacity: 0,
+        y: 30,
+        duration: 0.7,
+        ease: "power3.out",
+        delay: 1.8,
+      });
+
+      // Profile image
+      gsap.from(".hero-profile", {
+        scale: 0.8,
+        opacity: 0,
+        duration: 1,
+        ease: "back.out(1.4)",
+        delay: 0.8,
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Scroll effect
+  useEffect(() => {
+    const onScroll = () => {
+      if (!cardRef.current) return;
+      const scroll = window.scrollY;
+      const factor = Math.min(scroll / 600, 1);
+      cardRef.current.style.transform = `scale(${1 - factor * 0.06})`;
+      cardRef.current.style.opacity = `${1 - factor * 0.4}`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <motion.div whileHover={{ y: -4, scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
-      <div className="text-2xl font-display font-bold gradient-text">{value}</div>
-      <div className="text-xs text-muted-foreground uppercase tracking-wider">{label}</div>
-    </motion.div>
+    <section
+      ref={sectionRef}
+      className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-8 sm:px-6 lg:px-8"
+    >
+      {/* Floating particles */}
+      <div ref={particlesRef} className="absolute inset-0 pointer-events-none overflow-hidden">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div
+            key={i}
+            className="particle-dot absolute rounded-full"
+            style={{
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+              background: `rgba(${Math.random() > 0.5 ? "0,255,200" : "100,180,255"},${
+                Math.random() * 0.4 + 0.2
+              })`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              boxShadow: `0 0 6px rgba(0,255,200,0.3)`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Main glassmorphism card */}
+      <div
+        ref={cardRef}
+        className="hero-card relative w-full max-w-7xl rounded-[2rem] sm:rounded-[3rem] overflow-hidden"
+        style={{ willChange: "transform, opacity" }}
+      >
+        {/* Decorative glowing blob */}
+        <div
+          ref={blobRef}
+          className="absolute -left-20 top-1/3 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(0,255,200,0.25) 0%, rgba(0,200,170,0.08) 50%, transparent 70%)",
+            filter: "blur(60px)",
+          }}
+        />
+
+        {/* Card inner */}
+        <div className="hero-card-inner relative z-10 p-6 sm:p-10 lg:p-14">
+          {/* Top bar */}
+          <div className="flex items-center justify-between mb-12 sm:mb-16">
+            {/* Logo */}
+            <div className="hero-logo flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00ffc8] to-[#0088ff] flex items-center justify-center">
+                <span className="text-black font-bold text-lg font-display">I</span>
+              </div>
+              <div>
+                <div className="font-display font-bold text-lg leading-none hero-name-text">
+                  Ibrahim
+                </div>
+                <div className="text-[10px] uppercase tracking-[0.3em] hero-subtitle-label">
+                  Portfolio
+                </div>
+              </div>
+            </div>
+
+            {/* Nav */}
+            <nav className="hidden md:flex items-center gap-1">
+              {NAV_ITEMS.map((item, i) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className={`hero-nav-link px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 ${
+                    i === 0
+                      ? "hero-nav-active"
+                      : "hero-nav-inactive hover:bg-white/10"
+                  }`}
+                >
+                  {item}
+                </a>
+              ))}
+            </nav>
+
+            {/* Dark mode toggle */}
+            <button
+              onClick={() => setDark((d) => !d)}
+              className="hero-toggle p-2.5 rounded-full transition-all duration-300 hover:scale-110"
+              aria-label="Toggle theme"
+            >
+              {dark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+          </div>
+
+          {/* Hero content grid */}
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[400px] sm:min-h-[500px]">
+            {/* Left */}
+            <div className="space-y-6 sm:space-y-8">
+              <div>
+                <h1
+                  ref={headlineRef}
+                  className="hero-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold uppercase leading-[0.95] tracking-tight"
+                >
+                  CRAFTING DIGITAL MAGIC
+                </h1>
+                <p className="hero-subtitle mt-4 sm:mt-6 text-base sm:text-lg max-w-md hero-body-text">
+                  Full Stack Developer & AI Engineer — building immersive digital
+                  experiences from concept to deployment.
+                </p>
+              </div>
+
+              {/* Social icons */}
+              <div className="flex items-center gap-4">
+                <span className="hero-social-icon text-xs uppercase tracking-widest hero-muted-text">
+                  Follow me
+                </span>
+                <div className="flex items-center gap-2">
+                  {[
+                    { icon: Github, href: "https://github.com/Ibrahimkhalill" },
+                    {
+                      icon: Linkedin,
+                      href: "https://www.linkedin.com/in/mdibrahimhossen",
+                    },
+                    { icon: Twitter, href: "#" },
+                  ].map(({ icon: Icon, href }, i) => (
+                    <a
+                      key={i}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-social-icon hero-social-btn w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                    >
+                      <Icon className="w-4 h-4" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right — 3D orb + profile */}
+            <div className="relative flex items-center justify-center">
+              {/* Orb glow background */}
+              <div className="absolute w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] lg:w-[440px] lg:h-[440px] rounded-full hero-orb-bg" />
+
+              {/* 3D rotating orb */}
+              <div
+                ref={orbRef}
+                className="relative w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] lg:w-[380px] lg:h-[380px]"
+                style={{ transformStyle: "preserve-3d", perspective: "800px" }}
+              >
+                {/* Orb rings */}
+                {[0, 60, 120].map((rot, i) => (
+                  <div
+                    key={i}
+                    className="absolute inset-0 rounded-full hero-orb-ring"
+                    style={{
+                      transform: `rotateX(${rot}deg) rotateY(${rot * 0.5}deg)`,
+                      animationDelay: `${i * 0.3}s`,
+                    }}
+                  />
+                ))}
+
+                {/* Profile in center */}
+                <div className="hero-profile absolute inset-8 sm:inset-12 rounded-full overflow-hidden shadow-2xl ring-2 hero-profile-ring">
+                  <img
+                    src={profileImg}
+                    alt="Ibrahim Khalil — portrait"
+                    className="w-full h-full object-cover object-top scale-110"
+                    loading="eager"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                </div>
+              </div>
+
+              {/* Floating tech badges */}
+              <div className="absolute top-4 right-4 sm:top-8 sm:right-8 hero-badge px-3 py-1.5 rounded-full text-xs font-medium animate-float">
+                ✨ AI Engineer
+              </div>
+              <div
+                className="absolute bottom-8 left-0 sm:bottom-12 sm:left-4 hero-badge px-3 py-1.5 rounded-full text-xs font-medium animate-float"
+                style={{ animationDelay: "1s" }}
+              >
+                🚀 React · Next.js
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="hero-cta-wrap flex flex-col sm:flex-row items-center justify-between mt-12 sm:mt-16 gap-6">
+            <div className="flex items-center gap-6">
+              {[
+                { value: "4+", label: "Years" },
+                { value: "50+", label: "Projects" },
+                { value: "15+", label: "Tech" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-xl sm:text-2xl font-display font-bold hero-stat-value">
+                    {stat.value}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-widest hero-muted-text">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href="#work"
+              className="hero-cta inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-sm transition-transform duration-300 hover:scale-105 active:scale-95"
+            >
+              View My Work
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

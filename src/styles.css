@@ -34,7 +34,7 @@
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
 
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
@@ -235,4 +235,145 @@
   border-color: oklch(0.68 0.21 270 / 0.6);
   background: oklch(0.28 0.06 270 / 0.7);
   transform: translateY(-2px);
+}
+
+/* ===== Hero Section — GSAP Powered ===== */
+
+.hero-section {
+  background: linear-gradient(135deg, #1a2a3a 0%, #2d4a5a 40%, #1e3545 100%);
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.hero-card-inner {
+  background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+}
+
+.hero-name-text { color: #f0f4f8; }
+.hero-subtitle-label { color: rgba(255,255,255,0.5); }
+.hero-headline { color: #f0f4f8; }
+.hero-body-text { color: rgba(255,255,255,0.65); }
+.hero-muted-text { color: rgba(255,255,255,0.45); }
+.hero-stat-value {
+  background: linear-gradient(135deg, #00ffc8, #0088ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-nav-active {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+.hero-nav-inactive {
+  color: rgba(255,255,255,0.6);
+}
+
+.hero-toggle {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+}
+.hero-toggle:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.hero-social-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+}
+.hero-social-btn:hover {
+  background: rgba(0,255,200,0.15);
+  border-color: rgba(0,255,200,0.3);
+  color: #00ffc8;
+  box-shadow: 0 0 20px rgba(0,255,200,0.2);
+}
+
+.hero-orb-bg {
+  background: radial-gradient(circle, rgba(0,255,200,0.12) 0%, rgba(0,136,255,0.06) 50%, transparent 70%);
+  filter: blur(40px);
+}
+
+.hero-orb-ring {
+  border: 1px solid rgba(0,255,200,0.2);
+  box-shadow: 0 0 15px rgba(0,255,200,0.08);
+}
+
+.hero-profile-ring {
+  ring-color: rgba(0,255,200,0.3);
+  border: 2px solid rgba(0,255,200,0.25);
+}
+
+.hero-badge {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85);
+}
+
+.hero-cta {
+  background: linear-gradient(135deg, #00ffc8 0%, #00c896 50%, #0088ff 100%);
+  color: #0a1520;
+  font-weight: 700;
+  box-shadow: 0 8px 30px rgba(0,255,200,0.3);
+}
+.hero-cta:hover {
+  box-shadow: 0 12px 40px rgba(0,255,200,0.5);
+}
+
+/* ===== Light mode overrides ===== */
+.light-mode .hero-section {
+  background: linear-gradient(135deg, #c8d8e4 0%, #e8f0f6 40%, #d5e3ed 100%);
+}
+.light-mode .hero-card {
+  background: rgba(255,255,255,0.75);
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+.light-mode .hero-card-inner {
+  background: linear-gradient(145deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%);
+}
+.light-mode .hero-name-text { color: #1a2a3a; }
+.light-mode .hero-subtitle-label { color: rgba(0,0,0,0.45); }
+.light-mode .hero-headline { color: #1a2a3a; }
+.light-mode .hero-body-text { color: rgba(0,0,0,0.6); }
+.light-mode .hero-muted-text { color: rgba(0,0,0,0.4); }
+.light-mode .hero-nav-active {
+  background: rgba(0,0,0,0.08);
+  color: #1a2a3a;
+}
+.light-mode .hero-nav-inactive { color: rgba(0,0,0,0.5); }
+.light-mode .hero-toggle {
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.1);
+  color: rgba(0,0,0,0.6);
+}
+.light-mode .hero-social-btn {
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.08);
+  color: rgba(0,0,0,0.6);
+}
+.light-mode .hero-social-btn:hover {
+  background: rgba(0,136,255,0.1);
+  border-color: rgba(0,136,255,0.3);
+  color: #0066cc;
+}
+.light-mode .hero-badge {
+  background: rgba(255,255,255,0.8);
+  border-color: rgba(0,0,0,0.08);
+  color: rgba(0,0,0,0.75);
+}
+.light-mode .hero-cta {
+  background: linear-gradient(135deg, #0066cc 0%, #0088ff 100%);
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(0,100,200,0.3);
 }
